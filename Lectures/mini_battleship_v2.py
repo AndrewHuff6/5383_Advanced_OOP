@@ -1,8 +1,5 @@
 # New and improved version of mini battleship
-# Current issue(s)
-# 1. The rows and columns are backwards
-# 2. The indexing is thrown off
-
+# Andrew Huff 8/27/26
 
 import random
 
@@ -16,28 +13,41 @@ def display_board(board):
 cpu_x = random.randint(1,5)
 cpu_y = random.randint(1,5)
 
-# Create the board
+# Create the board - a 5 by 5 grid
 board = []
-for row in range(5):
+for column in range(1,6): 
     board.append(['.','.','.','.','.'])
+
+
+# Determines how many guesses the user has to find the battleship
+guesses = 5
 
 # Display the original board
 display_board(board)
 
 # Gameplay loop
-print(cpu_x, cpu_y)
-for i in range(2):
+# print(cpu_x, cpu_y)
+for column in range(guesses):
     # Grab the user's coords
-    user_x = int(input("Enter your x-coordinate guess: "))
-    user_y = int(input("Enter your y-coordinate guess: "))
+    user_x = int(input("Enter your x-coordinate guess (1-5): "))
+    user_y = int(input("Enter your y-coordinate guess (1-5): "))
 
     # Compare user coords to cpu coords
     if cpu_x == user_x and cpu_y == user_y:
-        board[user_x][user_y] = "H"
-        # Display the map
+        board[user_y - 1][user_x - 1] = "H" # accounts for the indexing issue
+        # Display the updated board
         display_board(board)
+        print("")
+        print("Congratulations! You sunk my battleship!")
+        print("")
         break
     else:
-        board[user_x][user_y] = "M"
-        # Display the map
+        board[user_y - 1][user_x - 1] = "M" # accounts for the indexing issue
+        # Display the updated board, try again
         display_board(board)
+        guesses -= 1
+        # For grammatical correctness
+        if guesses > 1:
+            print(f"You have {guesses} guesses left.")
+        else:
+            print(f"You have {guesses} guess left.")
