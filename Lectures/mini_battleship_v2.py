@@ -9,6 +9,12 @@ def display_board(board):
     for row in board:
         print(" ".join(row))
 
+#----------------------#
+#                      #
+# BEGINNING OF PROGRAM #
+#                      #
+#----------------------#
+
 # Generate random placement of a 1 by 1 battleship
 cpu_x = random.randint(1,5)
 cpu_y = random.randint(1,5)
@@ -18,7 +24,6 @@ board = []
 for column in range(1,6): 
     board.append(['.','.','.','.','.'])
 
-
 # Determines how many guesses the user has to find the battleship
 guesses = 5
 
@@ -26,7 +31,7 @@ guesses = 5
 display_board(board)
 
 # Gameplay loop
-# print(cpu_x, cpu_y)
+print(cpu_x, cpu_y)
 for column in range(guesses):
     # Grab the user's coords
     user_x = int(input("Enter your x-coordinate guess (1-5): "))
@@ -37,9 +42,7 @@ for column in range(guesses):
         board[user_y - 1][user_x - 1] = "H" # accounts for the indexing issue
         # Display the updated board
         display_board(board)
-        print("")
         print("Congratulations! You sunk my battleship!")
-        print("")
         break
     else:
         board[user_y - 1][user_x - 1] = "M" # accounts for the indexing issue
@@ -49,5 +52,8 @@ for column in range(guesses):
         # For grammatical correctness
         if guesses > 1:
             print(f"You have {guesses} guesses left.")
-        else:
+        elif guesses == 1:
             print(f"You have {guesses} guess left.")
+        else:
+            print("You have no guesses left - Game over.")
+            print(f"The battleship was at {cpu_x}, {cpu_y}.")
