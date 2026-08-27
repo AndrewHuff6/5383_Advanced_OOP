@@ -31,7 +31,7 @@ guesses = 5
 display_board(board)
 
 # Gameplay loop
-print(cpu_x, cpu_y)
+# print(cpu_x, cpu_y)
 for column in range(guesses):
     # Grab the user's coords
     user_x = int(input("Enter your x-coordinate guess (1-5): "))
