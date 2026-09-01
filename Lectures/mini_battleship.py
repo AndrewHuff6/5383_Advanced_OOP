@@ -1,3 +1,6 @@
+# First Version - done on 8/27/26
+# Andrew Huff
+
 import random
 
 cpu_x = random.randint(1,5)
