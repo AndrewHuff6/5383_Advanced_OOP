@@ -1,7 +1,9 @@
 import time
+import threading
 
-class Barista():
+class Barista(threading.Thread):
   def __init__(self, name):
+    super().__init__()
     self.name = name
 
   def make_coffee():
