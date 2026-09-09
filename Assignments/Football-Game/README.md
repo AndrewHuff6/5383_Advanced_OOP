@@ -1,8 +1,7 @@
 # Andrew Huff - Assignment One
 Object-Oriented Football Game
 
-## Details
-#### Design - 
-#### Design Implementation - 
-#### Presentation - https://github.com/AndrewHuff6/5383_Advanced_OOP.git
-#### Final Project Proposal - 
+## Project Details
+#### Design/Design Implementation - https://github.com/AndrewHuff6/5383_Advanced_OOP/tree/main/Assignments/Football-Game
+#### Presentation - slideshow link/file here
+#### Final Project Proposal - final proposal link/file upload here
