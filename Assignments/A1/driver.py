@@ -43,8 +43,10 @@ defense_players.append(cb)  # Add the corner back to the defense players list
 
 print("Offense:")
 for player in offense_players:
-    print(f" Player Name: {player.name}, Position: {player.position}, Speed: {player.speed}, Strength: {player.strength}, Stamina: {player.stamina}")
+    # Do not want to print ALL attributes of the player
+    print(f" Player Name: {player.name}, Position: {player.position}")
 
 print("Defense:")
 for player in defense_players:
-    print(f" Player Name: {player.name}, Position: {player.position}, Speed: {player.speed}, Strength: {player.strength}, Stamina: {player.stamina}")
+    # Do not want to print ALL attributes of the player
+    print(f" Player Name: {player.name}, Position: {player.position}")
