@@ -1,7 +1,4 @@
 # Python file for the players in the game
-# CURRENT ISSUE(S)
-# 1. not quite sure how to handle running back getting tackled yet
-# 2. may want to change the boolean statements to a more complex calculation later, but for now, this is fine
 
 # Random introduces margin of error for the simulated players
 import random
@@ -42,6 +39,7 @@ class QuarterBack(Player):
     def throw(self, receiver, defender, yards_to_go=10):
         distance = self.throw_distance(yards_to_go)
 
+        # Modify the quarterback's accuracy based on the distance of the throw
         if distance == "short":
             accuracy_modifier = 5
         elif distance == "medium":
@@ -49,7 +47,8 @@ class QuarterBack(Player):
         else: 
             accuracy_modifier = -5
 
-        ball_placement = self.accuracy + accuracy_modifier + random.randint(-10, 10)
+        ball_placement = self.accuracy + accuracy_modifier + random.randint(-5, 5) # random reduced considering accuracy modifier
+        # Determine if the receiver catches the ball based on the ball placement and the defender's coverage ability
         is_caught = receiver.catch(ball_placement, defender)
 
         # Return the distance of the throw and whether the receiver caught the ball
