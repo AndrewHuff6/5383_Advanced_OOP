@@ -1,0 +1,8 @@
+Andrew Huff
+Advanced OOP
+Dr. Eldefrawy
+
+	As I finalize my project for our first assignment of the semester, I feel rather excited to venture towards video game design. Having been a collegiate football player, combining my interests in both sports and software development is a dream come true. 
+	The main target for this project would be to allow PvP (player vs player) opportunities across a network setting. I believe the best way to reach that goal is shifting the game from a command terminal to a web-based application. Each player would be capable of not only making decisions for their offense, but to also physically control players on both sides of the football. I envision this application to be most similar to the Madden football game series.
+	At this moment, I plan to create an entire roster for both teams, with each player using their own names and ratings. This will allow at least twenty-two players on a team at a time (eleven on offense, eleven on defense). My current project only contains a subset of players on each side of the ball, but integrating this feature alongside controllable players would elevate the realism aspect of the game. To do this, I would simply add more positions as classes that will extend from the Player super class. There will also be a point in time to determine how the players will move, which could be established by creating a “controller” that all players will utilize. Lastly I would have to further research python graphics libraries. Having used pygame in the past, I am unsure if it could integrate with sports games such as mine.
+	I am excited to further build upon this project, and to see what challenges will present themselves as I continue in its development process!
