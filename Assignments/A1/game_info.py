@@ -15,12 +15,16 @@ class GameState:
     def other_team(self):
         return self.away_team if self.possession is self.home_team else self.home_team
 
+    def print_score(self):
+        print(f"Score: {self.home_team.name} {self.home_team.score}, " f"{self.away_team.name} {self.away_team.score}\n")
+
     # Turnover (interception or turnover on downs) or opposing team scores a touchdown
     def change_possession(self):
         self.possession = self.other_team()
         self.field_position = max(0, 100 - self.field_position)
         self.down = 1
         self.yards_to_go = 10
+        self.print_score()  # Display the score after a change in possession
 
     # Resets the next drive at the 25 yard line, 1st down and 10 yards to go
     def reset_drive(self):
@@ -53,13 +57,11 @@ class GameState:
         return self.down > 4
 
      # Runs a single play: picks run or pass, achieve play end, and updates game state
-    def run_play(self):
+    def run_play(self, play_call=None):
         offense = self.possession   # offense is in possesion of the football
         defense = self.other_team() # defense does not have possesion of the football
  
-        play_call = random.choice(["run", "pass"])
- 
-        # Determine the play call type, and execute accordingly
+        # Evaluate the play call type, and execute accordingly
         if play_call == "run":
             yards = self._resolve_run(offense.get_rb(), defense.get_dl(), defense.get_lb())
         else:

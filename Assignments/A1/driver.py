@@ -21,29 +21,28 @@ else:
     print("-" * 41)
     # TEAM ONE INFO
     # Players on Offense
-    qb1 = QuarterBack("Andrew")
-    rb1 = RunningBack("John")
-    wr1 = WideReceiver("Mike")
+    qb1 = QuarterBack("QB")
+    rb1 = RunningBack("RB")
+    wr1 = WideReceiver("WR")
 
     # Players on Defense
-    dl1 = Deflineman("James")
-    lb1 = LineBacker("David")
-    cb1 = CornerBack("Chris")
+    dl1 = Deflineman("DL")
+    lb1 = LineBacker("LB")
+    cb1 = CornerBack("CB")
 
     # Create team objects for home teams
     home_team = Team("Home Team", [qb1, rb1, wr1], [dl1, lb1, cb1])
 
     # TEAM TWO INFO
-
     # Players on Offense
-    qb2 = QuarterBack("Tom")
-    rb2 = RunningBack("Jerry")
-    wr2 = WideReceiver("Sam")
+    qb2 = QuarterBack("QB")
+    rb2 = RunningBack("RB")
+    wr2 = WideReceiver("WR")
 
     # Players on Defense
-    dl2 = Deflineman("Bob")
-    lb2 = LineBacker("Steve")
-    cb2 = CornerBack("Alex")
+    dl2 = Deflineman("DL")
+    lb2 = LineBacker("LB")
+    cb2 = CornerBack("CB")
 
     # Create team objects for away team
     away_team = Team("Away Team", [qb2, rb2, wr2], [dl2, lb2, cb2])
@@ -75,9 +74,41 @@ else:
 
     print("-" * 41)
     print("Game setup complete! Starting the game...\n")
+
+    # Allow the user to choose a team to control
+    print(f"Choose a team to control: ")
+    # Make the format look nicer
+    user_choice = input(f" 1. {home_team.name} \n 2. {away_team.name}\n Enter 1 or 2: ")
+    if user_choice == "1":
+        user_team = home_team
+        print(f"You have chosen to control {home_team.name}.\n")
+    elif user_choice == "2":
+        user_team = away_team
+        print(f"You have chosen to control {away_team.name}.\n")
+    else:
+        print("Invalid choice. Restart the program.\n")
+        exit()  # force program shutdown if user does not choose a team
+
     print(f"Down: {game_state.down}, Yards to go: {game_state.yards_to_go}, Field position: {game_state.field_position}, Possession: {game_state.possession.name}\n")
 
     # PLAY THE GAME
-    game_state.play_game(quarters=4, plays_per_quarter=6) # can change quarter length by overwritting 6
-    game_state.final_score()    # display the final score of the game
+    # These can be changed to lengthen or shorten the game
+    quarters = 4
+    plays_per_quarter = 6
 
+    # Main game loop that runs through each quarter and each play within the quarter
+    for quarter in range(1, quarters + 1):
+        game_state.quarter = quarter
+        print(f"\nQuarter {quarter}")
+ 
+        for _ in range(plays_per_quarter):
+            if game_state.possession is user_team:
+                call = input(f"  Down {game_state.down}, {game_state.yards_to_go} to go - "
+                          f"Run or Pass? (r/p): ").strip().lower()
+                play_call = "run" if call.startswith("r") else "pass"
+                game_state.run_play(play_call)
+            else:
+            # CPU-controlled team picks automatically
+                game_state.run_play()
+
+game_state.final_score()    # display the final score of the game
