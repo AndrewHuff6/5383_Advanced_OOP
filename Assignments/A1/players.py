@@ -16,8 +16,10 @@ class Player:
 class QuarterBack(Player):
     def __init__(self, name, speed=80, strength=70, stamina=75, accuracy=80):
         super().__init__(name, "Quarterback", speed, strength, stamina)
+        # Position-specific attributes for the quarterback
         self.accuracy = accuracy
 
+    # Quarterback specific function to throw the football
     def throw_distance(self, yards_to_go):
         if yards_to_go <= 4:
             # Short pass is more likely for short yardage situations
@@ -60,6 +62,7 @@ class RunningBack(Player):
     def __init__(self, name, speed=80, strength=90, stamina=85):
         super().__init__(name, "Running back", speed, strength, stamina)
 
+    # Running back specific function to run with the football
     def run(self, defender):
         run_chance = self.speed + random.randint(-10,10)
         if run_chance > defender.speed:
@@ -71,8 +74,10 @@ class RunningBack(Player):
 class WideReceiver(Player):
     def __init__(self, name, speed=90, strength=65, stamina=80, catch_ability=85):
         super().__init__(name, "Wide receiver", speed, strength, stamina)
+        # Position-specific attributes for the wide receiver
         self.catch_ability = catch_ability
 
+    # Wide receiver specific function to the throw from the quarterback
     def catch(self, ball_placement, defender):
         catch_chance = self.speed + self.catch_ability + ball_placement + random.randint(-10,10)
         if catch_chance > defender.speed + defender.coverage_ability:
@@ -85,8 +90,10 @@ class WideReceiver(Player):
 class Deflineman(Player):
     def __init__(self, name, speed=55, strength=95, stamina=70, pressure_ability=85):
         super().__init__(name, "D-Lineman", speed, strength, stamina)
+        # Position-specific attributes for the defensive lineman
         self.pressure_ability = pressure_ability
 
+    # Defensive lineman specific function to tackle the running back
     def sack(self, quarterback):
         sack_chance = self.pressure_ability + random.randint(-10,10)
         if sack_chance > quarterback.speed:
@@ -112,11 +119,12 @@ class LineBacker(Player):
 # Cornerback class definition for all CBs in the game.
 class CornerBack(Player):
     def __init__(self, name, speed=90, strength=70, stamina=75, coverage_ability=75, tackle_ability=70):
-        super().__init__(name, "Cornerback", speed, strength, stamina,)
+        super().__init__(name, "Cornerback", speed, strength, stamina)
         # Position-specific attributes for the cornerback
         self.coverage_ability = coverage_ability
         self.tackle_ability = tackle_ability
 
+    # Cornerback specific function to tackle the wide receiver
     def tackle(self, wide_receiver):
         tackle_chance = self.tackle_ability + random.randint(-10,10)
         if tackle_chance > wide_receiver.speed:
