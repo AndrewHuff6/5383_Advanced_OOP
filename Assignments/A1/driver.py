@@ -92,6 +92,7 @@ else:
     print(f"Down: {game_state.down}, Yards to go: {game_state.yards_to_go}, Field position: {game_state.field_position}, Possession: {game_state.possession.name}\n")
 
     # PLAY THE GAME
+    
     # These can be changed to lengthen or shorten the game
     quarters = 4
     plays_per_quarter = 6
@@ -99,16 +100,21 @@ else:
     # Main game loop that runs through each quarter and each play within the quarter
     for quarter in range(1, quarters + 1):
         game_state.quarter = quarter
+        # Display the current quarter
         print(f"\nQuarter {quarter}")
  
+        # Loop through each play in the quarter
         for _ in range(plays_per_quarter):
+            # While the user's team is on offense, allow them to choose the play type (run or pass) and execute the play
             if game_state.possession is user_team:
                 call = input(f"  Down {game_state.down}, {game_state.yards_to_go} to go - "
-                          f"Run or Pass? (r/p): ").strip().lower()
+                          f"Run or Pass? (r/p): ").strip().lower()   # .strip() and .lower() to make sure the input is valid and not case sensitive
+                # Determine the play call type, and execute accordingly
                 play_call = "run" if call.startswith("r") else "pass"
+                # Runt he play with the user's chosen play call
                 game_state.run_play(play_call)
             else:
-            # CPU-controlled team picks automatically
+            # The CPU-controlled team picks automatically which play(s) to run
                 game_state.run_play()
 
 game_state.final_score()    # display the final score of the game
