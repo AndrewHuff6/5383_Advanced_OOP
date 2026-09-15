@@ -146,19 +146,6 @@ class GameState:
         else:
             print()  # blank line for readability between plays
  
-    # Runs a set number of plays, used to represent one quarter
-    def play_quarter(self, num_plays=6):
-        for _ in range(num_plays):
-            self.run_play()
- 
-    # Runs the full game across all quarters
-    # Defaults - 4 quarters in a regular game, let's say 6 total plays per quarter
-    def play_game(self, quarters=4, plays_per_quarter=6):
-        for q in range(1, quarters + 1):
-            self.quarter = q
-            print(f"QUARTER {q}")
-            self.play_quarter(plays_per_quarter)
- 
     # Display the final score of the game for each team
     def final_score(self):
         print("\nFINAL SCORE:")
