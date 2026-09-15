@@ -1,6 +1,6 @@
 # Andrew Huff - Assignment One
 ## Object-Oriented Football Game
-This is a game about...
+This is sequential football game that allows a single user to play a football game against the CPU! Select your team, and call your offensive plays to lead your team to victory!
 
 ## Project Details/Requirements
 #### Instructions - https://d2l.msutexas.edu/d2l/le/dropbox/138257/169927/DownloadAttachment?fid=7232537
