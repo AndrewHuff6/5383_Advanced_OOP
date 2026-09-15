@@ -5,7 +5,8 @@
 from players import QuarterBack, RunningBack, WideReceiver, Deflineman, LineBacker, CornerBack   
 from team_info import Team
 from game_info import GameState
-# from play_game import .
+
+import time
 
 # BEGINNING OF PROGRAM RUN
 print("Welcome to Andrew's Football Game Simulator!")
@@ -116,5 +117,6 @@ else:
             else:
             # The CPU-controlled team picks automatically which play(s) to run
                 game_state.run_play()
+                time.sleep(2)
 
 game_state.final_score()    # display the final score of the game
