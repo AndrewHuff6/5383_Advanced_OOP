@@ -111,7 +111,11 @@ else:
                 call = input(f"  Down {game_state.down}, {game_state.yards_to_go} to go - "
                           f"Run or Pass? (r/p): ").strip().lower()   # .strip() and .lower() to make sure the input is valid and not case sensitive
                 # Determine the play call type, and execute accordingly
-                play_call = "run" if call.startswith("r") else "pass"
+                #play_call = "run" if call.startswith("r") else "pass"
+                if call == 'r':
+                    play_call = "run"
+                elif call == 'p':
+                    play_call = "pass"
                 # Runt he play with the user's chosen play call
                 game_state.run_play(play_call)
             else:
