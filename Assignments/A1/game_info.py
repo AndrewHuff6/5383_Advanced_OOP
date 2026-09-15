@@ -129,7 +129,7 @@ class GameState:
         # If a touchdown is scored, update the score, reset the drive, then change possesion
         if self.is_touchdown():
             print(f"  TOUCHDOWN, {offense.name}!\n")
-            offense.add_score(7)
+            offense.update_score(7)
             self.reset_drive()
             self.change_possession()
             return
@@ -159,6 +159,6 @@ class GameState:
  
     # Display the final score of the game for each team
     def final_score(self):
-        print("\nFinal Score:")
+        print("\nFINAL SCORE:")
         print(f"  {self.home_team.name}: {self.home_team.score}")
         print(f"  {self.away_team.name}: {self.away_team.score}")
