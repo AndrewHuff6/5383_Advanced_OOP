@@ -34,7 +34,7 @@ class QuarterBack(Player):
         return random.choices(distances, chances, k=1)[0]
 
     # Quarterback specific function to pass the ball to a receiver
-    # Default yards_to_go is set to 10, since Offense starts with 1st and 10
+    # yards_to_go is set to 10, since Offense starts with 1st and 10
     # Note: Wanted to call "pass", but pass is a reserved word already :-/
     def throw(self, receiver, defender, yards_to_go=10):
         distance = self.throw_distance(yards_to_go)
@@ -102,9 +102,9 @@ class LineBacker(Player):
         self.tackle_ability = tackle_ability
 
     # Linebacker specific function to tackle the running back
-    def tackle(self, running_back):
+    def tackle(self, rb):
         tackle_chance = self.tackle_ability + random.randint(-10,10)
-        if tackle_chance > running_back.speed:
+        if tackle_chance > rb.speed:
             return True # may change to a more complex calculation later, but for now, this is fine
         else:
             return False # may change to a more complex calculation later, but for now, this is fine
