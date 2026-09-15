@@ -111,7 +111,6 @@ else:
                 call = input(f"  Down {game_state.down}, {game_state.yards_to_go} to go - "
                           f"Run or Pass? (r/p): ").strip().lower()   # .strip() and .lower() to make sure the input is valid and not case sensitive
                 # Determine the play call type, and execute accordingly
-                #play_call = "run" if call.startswith("r") else "pass"
                 if call == 'r':
                     play_call = "run"
                 elif call == 'p':
@@ -122,5 +121,4 @@ else:
             # The CPU-controlled team picks automatically which play(s) to run
                 game_state.run_play()
                 time.sleep(2)
-
-game_state.final_score()    # display the final score of the game
+    game_state.final_score()    # display the final score of the game
