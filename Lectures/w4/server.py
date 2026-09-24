@@ -12,7 +12,7 @@ server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind(("localhost", 5002))
 server_socket.listen(1)
 
-# loop that listens for three messages
+# loop that listens for messages
 while True:
     print("Waiting for client...")
     client, address = server_socket.accept()
