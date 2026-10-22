@@ -21,11 +21,6 @@ if __name__ == "__main__":
     except Exception:
         print("Error message")
 
-    else:
-        pass
-    finally:
-        pass
-
     '''
     USING IF STATEMENTS 
 
