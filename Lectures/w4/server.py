@@ -1,7 +1,6 @@
 import socket, time, threading
 
 class Worker(threading.Thread):
-
     def run(self):
         time.sleep(10)
         print("Thread is finished")
@@ -17,11 +16,9 @@ while True:
     print("Waiting for client...")
     client, address = server_socket.accept()
     message = client.recv(2048).decode()
-
     print(message)
 
     w = Worker()
-
     w.start()
     
     client.sendall("Hello back from the server!".encode())
