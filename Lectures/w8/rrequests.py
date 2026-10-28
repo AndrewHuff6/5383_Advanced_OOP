@@ -5,14 +5,11 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 
-#nltk.download('wordnet')
-
 url = "https://msutexas.edu"
 response = requests.get(url)
-
 print(len(response.text))
-soup = BeautifulSoup(response.text, "html.parser")
 
+soup = BeautifulSoup(response.text, "html.parser")
 piece_of_information = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'p'])
 
 text = ""
