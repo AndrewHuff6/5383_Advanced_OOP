@@ -1,11 +1,12 @@
-# Server.py
+# Week 2 - Minimal WebSocket server
 # Accepts a client, prints whatever it sends, and replies to it.
 # Later weeks will import Team / GameState from this same folder.
 
 import asyncio
 import websockets
 
-port = 8765
+PORT = 8765
+
 
 # Runs once per connected client (one coroutine per connection)
 async def handler(websocket):
@@ -21,9 +22,10 @@ async def handler(websocket):
 
 
 async def main():
-    # 0.0.0.0 so the Codespace's port forwarding can reach the server
-    async with websockets.serve(handler, "0.0.0.0", port):
-        print(f"WebSocket server listening on port {port}")
+    # 0.0.0.0 so other devices (or a Codespace's port forwarding) can reach the server
+    async with websockets.serve(handler, "0.0.0.0", PORT):
+        print(f"WebSocket server listening on port {PORT}")
         await asyncio.Future()  # run forever
+
 
 asyncio.run(main())

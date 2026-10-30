@@ -1,4 +1,4 @@
-# Pygame window skeleton - Week 2 (browser-compatible via Pygbag, now with a WebSocket)
+# Pygame window skeleton 
 import asyncio
 import sys
 import pygame
@@ -86,7 +86,6 @@ async def main():
         status, reply = read_websocket()
 
         screen.fill((34, 139, 34))  # make the field green
-        draw_text("Week 2 client", 20)  # if you can't see this, the browser is running old code
         draw_text(f"Connection: {status}", 80)
         draw_text("Sent: hello", 140)
         draw_text(f"Server replied: {reply}", 200)
