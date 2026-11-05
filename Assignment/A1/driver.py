@@ -1,0 +1,124 @@
+# Football Game Simulation using Python
+# Andrew Huff - 5383 Advanced OOP
+
+# imports all position players to driver
+from players import QuarterBack, RunningBack, WideReceiver, Deflineman, LineBacker, CornerBack   
+from team_info import Team
+from game_info import GameState
+
+import time
+
+# BEGINNING OF PROGRAM RUN
+print("Welcome to Andrew's Football Game Simulator!")
+choice = input("Press space -> enter to start the game...")
+
+# Determine whether to start the game or exit based on user input
+if choice != " ":
+    print("Goodbye!")
+else:
+    print("-" * 41)
+    print("Let's play some football!")
+    print("Creating teams...")
+    print("-" * 41)
+    # TEAM ONE INFO
+    # Players on Offense
+    qb1 = QuarterBack("QB")
+    rb1 = RunningBack("RB")
+    wr1 = WideReceiver("WR")
+
+    # Players on Defense
+    dl1 = Deflineman("DL")
+    lb1 = LineBacker("LB")
+    cb1 = CornerBack("CB")
+
+    # Create team objects for home teams
+    home_team = Team("Home Team", [qb1, rb1, wr1], [dl1, lb1, cb1])
+
+    # TEAM TWO INFO
+    # Players on Offense
+    qb2 = QuarterBack("QB")
+    rb2 = RunningBack("RB")
+    wr2 = WideReceiver("WR")
+
+    # Players on Defense
+    dl2 = Deflineman("DL")
+    lb2 = LineBacker("LB")
+    cb2 = CornerBack("CB")
+
+    # Create team objects for away team
+    away_team = Team("Away Team", [qb2, rb2, wr2], [dl2, lb2, cb2])
+
+    # Display roster information for both teams
+    print(f"{home_team.name} - Offense:")
+    for player in home_team.offense_players:
+        # Do not want to print ALL attributes of the players
+        print(f" Player Name: {player.name}, Position: {player.position}")
+    
+    print(f"{home_team.name} - Defense:")
+    for player in home_team.defense_players:
+        # Do not want to print ALL attributes of the players
+        print(f" Player Name: {player.name}, Position: {player.position}")
+
+    print("\n") # for visual purposes
+    
+    print(f"{away_team.name} - Offense:")
+    for player in away_team.offense_players:
+        # Do not want to print ALL attributes of the players
+        print(f" Player Name: {player.name}, Position: {player.position}")
+    
+    print(f"{away_team.name} - Defense:")
+    for player in away_team.defense_players:
+        # Do not want to print ALL attributes of the players
+        print(f" Player Name: {player.name}, Position: {player.position}")
+
+    game_state = GameState(home_team, away_team)
+
+    print("-" * 41)
+    print("Game setup complete! Starting the game...\n")
+
+    # Allow the user to choose a team to control
+    print(f"Choose a team to control: ")
+    # Make the format look nicer
+    user_choice = input(f" 1. {home_team.name} \n 2. {away_team.name}\n Enter 1 or 2: ")
+    if user_choice == "1":
+        user_team = home_team
+        print(f"You have chosen to control {home_team.name}.\n")
+    elif user_choice == "2":
+        user_team = away_team
+        print(f"You have chosen to control {away_team.name}.\n")
+    else:
+        print("Invalid choice. Restart the program.\n")
+        exit()  # force program shutdown if user does not choose a team
+
+    print(f"Down: {game_state.down}, Yards to go: {game_state.yards_to_go}, Field position: {game_state.field_position}, Possession: {game_state.possession.name}\n")
+
+    # PLAY THE GAME
+    
+    # These can be changed to lengthen or shorten the game
+    quarters = 4
+    plays_per_quarter = 6
+
+    # Main game loop that runs through each quarter and each play within the quarter
+    for quarter in range(1, quarters + 1):
+        game_state.quarter = quarter
+        # Display the current quarter
+        print(f"\nQuarter {quarter}")
+ 
+        # Loop through each play in the quarter
+        for _ in range(plays_per_quarter):
+            # While the user's team is on offense, allow them to choose the play type (run or pass) and execute the play
+            if game_state.possession is user_team:
+                call = input(f"  Down {game_state.down}, {game_state.yards_to_go} to go - "
+                          f"Run or Pass? (r/p): ").strip().lower()   # .strip() and .lower() to make sure the input is valid and not case sensitive
+                # Determine the play call type, and execute accordingly
+                if call == 'r':
+                    play_call = "run"
+                elif call == 'p':
+                    play_call = "pass"
+                # Runt he play with the user's chosen play call
+                game_state.run_play(play_call)
+            else:
+            # The CPU-controlled team picks automatically which play(s) to run
+                game_state.run_play()
+                time.sleep(2)
+    game_state.final_score()    # display the final score of the game
