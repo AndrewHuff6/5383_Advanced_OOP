@@ -3,7 +3,7 @@ import requests
 url = "http://localhost:5000/"
 
 trials = 0
-while True:
+while trials <= 4:
     number = int(input("Enter secret number: "))
     response = requests.post(url + "/api/guess", json={"secret": number})
 
@@ -12,12 +12,16 @@ while True:
         break
 
     trials += 1
-    if trials >= 3:
-        print("Boss wins!")
-        break
+  
 
 
 
 
-    print(response.text)
+print("Boss wins!")
+        
+
+
+
+
+    #print(response.text)
 

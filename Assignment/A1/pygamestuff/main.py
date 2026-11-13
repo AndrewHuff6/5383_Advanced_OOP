@@ -34,13 +34,13 @@ end_zone_px = int(10 * yard_px)
 FIELD_width = int(120 * yard_px)
 
 # colors
-white = (255, 255, 255)
-grass = (34, 139, 34)
-backdrop = (20, 70, 20)
-home_color = (30, 60, 140)   # left end zone
-away_color = (140, 30, 30)   # right end zone
-ball_color = (139, 69, 19)
-first_down_color = (255, 215, 0)
+white = (255, 255, 255) # white, obviously
+grass = (34, 139, 34) # light green
+backdrop = (20, 70, 20) # dark green
+home_color = (30, 60, 140)   # left end zone, blue
+away_color = (140, 30, 30)   # right end zone, red
+ball_color = (139, 69, 19)  # brown
+first_down_color = (255, 215, 0) # gold
 
 # filled in if the JavaScript bridge fails to start, so the error shows on screen
 startup_error = ""
