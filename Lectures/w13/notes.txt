@@ -1,0 +1,11 @@
+OOP NOTES - 11/17/26
+
+asynchrony programming with sockts (computer freezes until it finishes its tsks switch swiftly between programs)
+hash collision (chaining, open addressing, double hashing, linear probing, quadratic probing)
+race conditions
+locks, mutex, semaphores
+
+hashing with immutable objects, why?
+and allowing duplicates (I am confiriming the information, i am not trying to guess it, it is matching, exact matching)
+fetch is background responsible for networking (javascript)
+snowball stemmer vs porterstemmer vs lemmatization/root extraction
