@@ -1,9 +1,12 @@
-OOP NOTES - 11/17/26
+OOP NOTES - 11/17/26 and 11/19/26
 
-asynchrony programming with sockts (computer freezes until it finishes its tsks switch swiftly between programs)
+asynchrony programming with sockets (computer freezes until it finishes its tsks switch swiftly between programs)
 hash collision (chaining, open addressing, double hashing, linear probing, quadratic probing)
 race conditions
 locks, mutex, semaphores
+
+EXAMPLE:
+ - Train or plane ticket booking system
 
 hashing with immutable objects, why?
 and allowing duplicates (I am confiriming the information, i am not trying to guess it, it is matching, exact matching)
